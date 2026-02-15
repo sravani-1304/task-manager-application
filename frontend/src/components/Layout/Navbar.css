@@ -1,0 +1,96 @@
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar.dark {
+  background-color: #1f2937;
+  color: white;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #2563eb;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar.dark .nav-logo {
+  color: #60a5fa;
+}
+
+.logo-icon {
+  font-size: 24px;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.welcome-text {
+  color: #4b5563;
+}
+
+.navbar.dark .welcome-text {
+  color: #d1d5db;
+}
+
+.theme-toggle {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar.dark .theme-toggle {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.theme-toggle:hover {
+  background-color: #d1d5db;
+}
+
+.navbar.dark .theme-toggle:hover {
+  background-color: #4b5563;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ef4444;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}

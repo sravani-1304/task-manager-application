@@ -1,0 +1,213 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  padding: 48px 16px;
+}
+
+.auth-card {
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.auth-card h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.auth-card p {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+.auth-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Input wrapper for icons */
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left side icons (User, Email, Lock) */
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #9ca3af;
+  font-size: 16px;
+  z-index: 1;
+}
+
+/* Base input styling */
+.auth-input {
+  width: 100%;
+  padding: 12px 45px 12px 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s;
+  background-color: white;
+  color: #111827;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.auth-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Password toggle button (eye icon) */
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 18px;
+  transition: color 0.2s;
+  z-index: 2;
+}
+
+.password-toggle-btn:hover {
+  color: #2563eb;
+}
+
+.password-toggle-btn:focus {
+  outline: none;
+}
+
+/* Error state */
+.auth-input.error {
+  border-color: #ef4444;
+}
+
+.auth-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+/* Button styling */
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 8px;
+}
+
+.auth-button:hover {
+  background-color: #1d4ed8;
+}
+
+.auth-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dark mode support */
+.dark .auth-container {
+  background-color: #111827;
+}
+
+.dark .auth-card {
+  background-color: #1f2937;
+}
+
+.dark .auth-card h2 {
+  color: #f3f4f6;
+}
+
+.dark .auth-card p {
+  color: #9ca3af;
+}
+
+.dark .auth-input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
+.dark .auth-input::placeholder {
+  color: #6b7280;
+}
+
+.dark .input-icon {
+  color: #6b7280;
+}
+
+.dark .password-toggle-btn {
+  color: #9ca3af;
+}
+
+.dark .password-toggle-btn:hover {
+  color: #60a5fa;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+  
+  .auth-input {
+    padding: 10px 40px 10px 35px;
+    font-size: 14px;
+  }
+  
+  .password-toggle-btn {
+    font-size: 16px;
+  }
+}

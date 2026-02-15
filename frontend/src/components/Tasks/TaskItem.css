@@ -1,0 +1,135 @@
+.task-item {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.2s;
+}
+
+.task-item:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.task-item.completed {
+  opacity: 0.75;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.status-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-icon {
+  color: #9ca3af;
+  transition: color 0.2s;
+}
+
+.status-icon.completed {
+  color: #16a34a;
+}
+
+.status-icon.pending:hover {
+  color: #2563eb;
+}
+
+.task-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.task-description {
+  margin-left: 32px;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 32px;
+}
+
+.priority-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.due-date {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.overdue-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  background-color: #fee2e2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.edit-btn:hover {
+  background-color: #bfdbfe;
+}
+
+.delete-btn {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.delete-btn:hover {
+  background-color: #fecaca;
+}
