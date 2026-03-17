@@ -2,17 +2,15 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 // Use explicit localhost URL
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://task-manager-application-gxhn.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
-  // Add timeout
   timeout: 10000,
 });
-
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
