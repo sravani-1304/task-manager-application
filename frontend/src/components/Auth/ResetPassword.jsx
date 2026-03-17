@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaLock, FaEye, FaEyeSlash, FaArrowLeft, FaTasks, FaRocket } from 'react-icons/fa';
 import api from '../../utils/api';
@@ -19,19 +19,19 @@ const ResetPassword = () => {
 
   // Validate token on mount
   useEffect(() => {
-    validateToken();
-  }, [token]);
+  validateToken();
+}, [token, validateToken]);
 
-  const validateToken = async () => {
-    try {
-      const response = await api.get(`/password-reset/validate/${token}`);
-      setValidToken(response.data.valid);
-    } catch (error) {
-      setValidToken(false);
-    } finally {
-      setCheckingToken(false);
-    }
-  };
+  const validateToken = useCallback(async () => {
+  try {
+    const response = await api.get(`/password-reset/validate/${token}`);
+    setValidToken(response.data.valid);
+  } catch (error) {
+    setValidToken(false);
+  } finally {
+    setCheckingToken(false);
+  }
+}, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
