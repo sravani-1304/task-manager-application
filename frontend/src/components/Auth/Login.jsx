@@ -8,13 +8,10 @@ import {
   FaLock, 
   FaEye, 
   FaEyeSlash,
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaJs,
+ 
   FaRocket
 } from 'react-icons/fa';
-import { SiMongodb, SiExpress } from 'react-icons/si';
+
 import './Auth.css';
 
 const Login = () => {

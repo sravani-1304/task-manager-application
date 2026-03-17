@@ -4,7 +4,7 @@ import {
   FaTasks, 
   FaRocket, 
   FaCheckCircle,
-  FaClock,
+ 
   FaChartLine,
   FaArrowRight,
   FaMoon,

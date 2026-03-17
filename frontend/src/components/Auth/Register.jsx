@@ -9,13 +9,10 @@ import {
   FaEyeSlash,
   FaTasks,
   FaRocket,
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaJs,
+  
   FaShieldAlt
 } from 'react-icons/fa';
-import { SiMongodb, SiExpress } from 'react-icons/si';
+
 import './Auth.css';
 
 const Register = () => {
