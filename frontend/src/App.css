@@ -10,11 +10,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .app {
   min-height: 100vh;
   background-color: #f9fafb;
+  color: #111827;
+  transition: all 0.3s ease;
 }
 
 .app.dark {
@@ -49,8 +52,32 @@ body {
   animation: spin 1s linear infinite;
 }
 
+.app.dark .spinner {
+  border-color: #374151;
+  border-top-color: #60a5fa;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Scrollbar styling for dark mode */
+.app.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.app.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.app.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 5px;
+}
+
+.app.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEdit, FaTrash, FaCheckCircle, FaCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaCheckCircle, FaCircle, FaExclamationCircle, FaSpinner } from 'react-icons/fa';
 import { format } from 'date-fns';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
@@ -12,14 +12,25 @@ const TaskItem = ({ task, onEdit, onTaskUpdated }) => {
     Low: { color: '#16a34a', bg: '#dcfce7' }
   };
 
+  const statusIcons = {
+    pending: <FaCircle className="status-icon pending" size={20} />,
+    ongoing: <FaSpinner className="status-icon ongoing" size={20} />,
+    completed: <FaCheckCircle className="status-icon completed" size={20} />
+  };
+
   const handleStatusToggle = async () => {
     try {
+      let newStatus;
+      if (task.status === 'pending') newStatus = 'ongoing';
+      else if (task.status === 'ongoing') newStatus = 'completed';
+      else newStatus = 'pending'; // completed -> pending
+
       const updatedTask = {
         ...task,
-        status: task.status === 'completed' ? 'pending' : 'completed'
+        status: newStatus
       };
       await api.put(`/tasks/${task._id}`, updatedTask);
-      toast.success(`Task marked as ${updatedTask.status}`);
+      toast.success(`Task marked as ${newStatus}`);
       onTaskUpdated();
     } catch (error) {
       toast.error('Failed to update task status');
@@ -41,17 +52,13 @@ const TaskItem = ({ task, onEdit, onTaskUpdated }) => {
   const isOverdue = new Date(task.dueDate) < new Date() && task.status !== 'completed';
 
   return (
-    <div className={`task-item ${task.status === 'completed' ? 'completed' : ''}`}>
+    <div className={`task-item ${task.status}`}>
       <div className="task-content">
         <div className="task-header">
           <button onClick={handleStatusToggle} className="status-toggle">
-            {task.status === 'completed' ? (
-              <FaCheckCircle className="status-icon completed" size={20} />
-            ) : (
-              <FaCircle className="status-icon pending" size={20} />
-            )}
+            {statusIcons[task.status]}
           </button>
-          <h3 className={`task-title ${task.status === 'completed' ? 'completed' : ''}`}>
+          <h3 className={`task-title ${task.status}`}>
             {task.title}
           </h3>
         </div>
@@ -71,6 +78,11 @@ const TaskItem = ({ task, onEdit, onTaskUpdated }) => {
             }}
           >
             {task.priority}
+          </span>
+          <span className={`status-badge ${task.status}`}>
+            {task.status === 'pending' && '⏳ Pending'}
+            {task.status === 'ongoing' && '🔄 Ongoing'}
+            {task.status === 'completed' && '✅ Completed'}
           </span>
           <span className="due-date">
             Due: {format(new Date(task.dueDate), 'MMM dd, yyyy')}

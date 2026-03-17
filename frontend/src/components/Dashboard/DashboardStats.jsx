@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaTasks, FaCheckCircle, FaClock, FaExclamationTriangle } from 'react-icons/fa';
+import { FaTasks, FaCheckCircle, FaClock, FaExclamationTriangle, FaSpinner } from 'react-icons/fa';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
 import './DashboardStats.css';
@@ -8,6 +8,7 @@ const DashboardStats = () => {
   const [stats, setStats] = useState({
     total: 0,
     completed: 0,
+    ongoing: 0,
     pending: 0,
     overdue: 0
   });
@@ -26,9 +27,10 @@ const DashboardStats = () => {
       const stats = {
         total: tasks.length,
         completed: tasks.filter(t => t.status === 'completed').length,
+        ongoing: tasks.filter(t => t.status === 'ongoing').length,
         pending: tasks.filter(t => t.status === 'pending').length,
         overdue: tasks.filter(t => 
-          t.status === 'pending' && new Date(t.dueDate) < now
+          t.status !== 'completed' && new Date(t.dueDate) < now
         ).length
       };
       
@@ -54,6 +56,13 @@ const DashboardStats = () => {
       icon: FaCheckCircle,
       color: '#16a34a',
       bgColor: '#dcfce7'
+    },
+    {
+      title: 'Ongoing',
+      value: stats.ongoing,
+      icon: FaSpinner,
+      color: '#f59e0b',
+      bgColor: '#fef3c7'
     },
     {
       title: 'Pending',

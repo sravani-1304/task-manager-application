@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   if (!user) return null;
@@ -22,15 +22,25 @@ const Navbar = () => {
       <div className="nav-container">
         <Link to="/" className="nav-logo">
           <FaTasks className="logo-icon" />
-          <span>TaskManager</span>
+          <span>TaskFlow</span>
         </Link>
 
         <div className="nav-items">
-          <span className="welcome-text">Welcome, {user?.name}</span>
-          <button onClick={toggleDarkMode} className="theme-toggle">
+          <span className="welcome-text">
+            Welcome, {user?.name}
+          </span>
+          <button 
+            onClick={toggleDarkMode} 
+            className="theme-toggle"
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
             {darkMode ? <FaSun /> : <FaMoon />}
           </button>
-          <button onClick={handleLogout} className="logout-btn">
+          <button 
+            onClick={handleLogout} 
+            className="logout-btn"
+            aria-label="Logout"
+          >
             <FaSignOutAlt />
             <span>Logout</span>
           </button>

@@ -132,6 +132,7 @@ const TaskForm = ({ task, onClose, onTaskSaved }) => {
                 className="form-select"
               >
                 <option value="pending">Pending</option>
+                <option value="ongoing">Ongoing</option>  {/* Added ongoing */}
                 <option value="completed">Completed</option>
               </select>
             </div>

@@ -16,6 +16,11 @@
   font-weight: 700;
   color: #111827;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.app.dark .task-list-header h1 {
+  color: #f3f4f6;
 }
 
 .add-task-btn {
@@ -30,11 +35,22 @@
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s;
+}
+
+.app.dark .add-task-btn {
+  background-color: #3b82f6;
 }
 
 .add-task-btn:hover {
   background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(37,99,235,0.3);
+}
+
+.app.dark .add-task-btn:hover {
+  background-color: #2563eb;
+  box-shadow: 0 4px 6px rgba(59,130,246,0.5);
 }
 
 .tasks-grid {
@@ -46,16 +62,35 @@
 .empty-state {
   text-align: center;
   padding: 48px 0;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.app.dark .empty-state {
+  background-color: #1f2937;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .empty-title {
   font-size: 18px;
   color: #6b7280;
   margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.app.dark .empty-title {
+  color: #9ca3af;
 }
 
 .empty-subtitle {
   color: #9ca3af;
+  transition: color 0.3s;
+}
+
+.app.dark .empty-subtitle {
+  color: #6b7280;
 }
 
 .pagination {
@@ -76,8 +111,19 @@
   transition: all 0.2s;
 }
 
+.app.dark .pagination-btn {
+  background-color: #1f2937;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
 .pagination-btn:hover:not(:disabled) {
   background-color: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.app.dark .pagination-btn:hover:not(:disabled) {
+  background-color: #374151;
 }
 
 .pagination-btn:disabled {
@@ -87,4 +133,9 @@
 
 .page-info {
   color: #6b7280;
+  transition: color 0.3s;
+}
+
+.app.dark .page-info {
+  color: #9ca3af;
 }

@@ -6,11 +6,23 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.app.dark .task-item {
+  background-color: #1f2937;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  border-color: #374151;
 }
 
 .task-item:hover {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.app.dark .task-item:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
 }
 
 .task-item.completed {
@@ -43,12 +55,24 @@
   transition: color 0.2s;
 }
 
+.app.dark .status-icon {
+  color: #6b7280;
+}
+
 .status-icon.completed {
   color: #16a34a;
 }
 
+.app.dark .status-icon.completed {
+  color: #4ade80;
+}
+
 .status-icon.pending:hover {
   color: #2563eb;
+}
+
+.app.dark .status-icon.pending:hover {
+  color: #60a5fa;
 }
 
 .task-title {
@@ -56,6 +80,11 @@
   font-weight: 600;
   color: #111827;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.app.dark .task-title {
+  color: #f3f4f6;
 }
 
 .task-title.completed {
@@ -63,10 +92,19 @@
   color: #6b7280;
 }
 
+.app.dark .task-title.completed {
+  color: #9ca3af;
+}
+
 .task-description {
   margin-left: 32px;
   color: #4b5563;
   margin-bottom: 16px;
+  transition: color 0.3s;
+}
+
+.app.dark .task-description {
+  color: #9ca3af;
 }
 
 .task-meta {
@@ -74,6 +112,7 @@
   align-items: center;
   gap: 16px;
   margin-left: 32px;
+  flex-wrap: wrap;
 }
 
 .priority-badge {
@@ -81,11 +120,30 @@
   padding: 4px 8px;
   border-radius: 9999px;
   font-weight: 500;
+  transition: all 0.3s;
+}
+
+/* Dark mode priority badges */
+.app.dark .priority-badge[style*="background-color: #fee2e2"] {
+  background-color: #7f1d1d !important;
+}
+
+.app.dark .priority-badge[style*="background-color: #fef9c3"] {
+  background-color: #854d0e !important;
+}
+
+.app.dark .priority-badge[style*="background-color: #dcfce7"] {
+  background-color: #14532d !important;
 }
 
 .due-date {
   font-size: 14px;
   color: #6b7280;
+  transition: color 0.3s;
+}
+
+.app.dark .due-date {
+  color: #9ca3af;
 }
 
 .overdue-badge {
@@ -97,6 +155,16 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  transition: all 0.3s;
+}
+
+.app.dark .overdue-badge {
+  background-color: #7f1d1d;
+  color: #f87171;
+}
+
+.overdue-icon {
+  font-size: 12px;
 }
 
 .task-actions {
@@ -121,8 +189,18 @@
   color: #2563eb;
 }
 
+.app.dark .edit-btn {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
 .edit-btn:hover {
   background-color: #bfdbfe;
+  transform: scale(1.05);
+}
+
+.app.dark .edit-btn:hover {
+  background-color: #1e40af;
 }
 
 .delete-btn {
@@ -130,6 +208,90 @@
   color: #dc2626;
 }
 
+.app.dark .delete-btn {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
 .delete-btn:hover {
   background-color: #fecaca;
+  transform: scale(1.05);
+}
+
+.app.dark .delete-btn:hover {
+  background-color: #991b1b;
+}
+/* Add to existing TaskItem.css */
+
+/* Status toggle icons */
+.status-icon.ongoing {
+  color: #f59e0b;
+  animation: spin 2s linear infinite;
+}
+
+.status-icon.ongoing:hover {
+  color: #d97706;
+}
+
+/* Status badge */
+.status-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.status-badge.pending {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.status-badge.ongoing {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.status-badge.completed {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+/* Dark mode status badge */
+.app.dark .status-badge.pending {
+  background-color: #854d0e;
+  color: #fde68a;
+}
+
+.app.dark .status-badge.ongoing {
+  background-color: #1e3a8a;
+  color: #bfdbfe;
+}
+
+.app.dark .status-badge.completed {
+  background-color: #14532d;
+  color: #bbf7d0;
+}
+
+/* Task item status specific styles */
+.task-item.pending {
+  border-left: 4px solid #f59e0b;
+}
+
+.task-item.ongoing {
+  border-left: 4px solid #3b82f6;
+}
+
+.task-item.completed {
+  border-left: 4px solid #10b981;
+  opacity: 0.8;
+}
+
+/* Animation for ongoing spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

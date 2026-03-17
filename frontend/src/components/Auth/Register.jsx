@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { 
+  FaUser, 
+  FaEnvelope, 
+  FaLock, 
+  FaEye, 
+  FaEyeSlash,
+  FaTasks,
+  FaRocket,
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+  FaJs,
+  FaShieldAlt
+} from 'react-icons/fa';
+import { SiMongodb, SiExpress } from 'react-icons/si';
 import './Auth.css';
 
 const Register = () => {
@@ -23,7 +37,6 @@ const Register = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Clear error for this field when user starts typing
     if (errors[e.target.name]) {
       setErrors({
         ...errors,
@@ -75,20 +88,47 @@ const Register = () => {
     });
     setLoading(false);
     if (result.success) {
-      navigate('/');
+      navigate('/dashboard');
     }
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Create your account</h2>
-        <p>
-          Or{' '}
-          <Link to="/login" className="auth-link">
-            sign in to existing account
-          </Link>
-        </p>
+        {/* Project Branding */}
+        <div className="project-brand">
+          <div className="brand-icon-wrapper">
+            <FaTasks className="brand-icon" />
+            <FaRocket className="brand-icon-secondary" />
+          </div>
+          <h1 className="project-name">TaskFlow</h1>
+          <p className="project-tagline">Organize. Prioritize. Achieve.</p>
+          
+          {/* Feature Pills */}
+          <div className="feature-pills">
+            <span className="pill">
+              <span className="pill-icon">✓</span> Full Stack
+            </span>
+            <span className="pill">
+              <span className="pill-icon">✓</span> Secure Auth
+            </span>
+            <span className="pill">
+              <span className="pill-icon">✓</span> Real-time
+            </span>
+          </div>
+        </div>
+
+        <div className="divider"></div>
+
+        <div className="card-header">
+          <h2>Join TaskFlow</h2>
+          <p>
+            Already have an account?{' '}
+            <Link to="/login" className="auth-link">
+              Sign in
+            </Link>
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
           {/* Name Field */}
@@ -143,7 +183,6 @@ const Register = () => {
                 onClick={togglePasswordVisibility}
                 className="password-toggle-btn"
                 tabIndex="-1"
-                aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -154,7 +193,7 @@ const Register = () => {
           {/* Confirm Password Field */}
           <div className="form-group">
             <div className="input-icon-wrapper">
-              <FaLock className="input-icon" />
+              <FaShieldAlt className="input-icon" />
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
@@ -169,7 +208,6 @@ const Register = () => {
                 onClick={toggleConfirmPasswordVisibility}
                 className="password-toggle-btn"
                 tabIndex="-1"
-                aria-label={showConfirmPassword ? "Hide password" : "Show password"}
               >
                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -177,10 +215,27 @@ const Register = () => {
             {errors.confirmPassword && <span className="error-text">{errors.confirmPassword}</span>}
           </div>
 
+          {/* Password Requirements */}
+          <div className="password-requirements">
+            <p className="requirements-title">Password strength:</p>
+            <ul className="requirements-list">
+              <li className={formData.password.length >= 6 ? 'met' : ''}>
+                <span className="requirement-indicator"></span>
+                At least 6 characters
+              </li>
+              <li className={formData.password && formData.password === formData.confirmPassword ? 'met' : ''}>
+                <span className="requirement-indicator"></span>
+                Passwords match
+              </li>
+            </ul>
+          </div>
+
           <button type="submit" disabled={loading} className="auth-button">
-            {loading ? 'Creating account...' : 'Sign up'}
+            {loading ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
+
+        
       </div>
     </div>
   );

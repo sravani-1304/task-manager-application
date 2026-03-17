@@ -22,12 +22,21 @@
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 24px;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+}
+
+.app.dark .stat-card {
+  background-color: #1f2937;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .stat-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app.dark .stat-card:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
 }
 
 .stat-content {
@@ -41,12 +50,22 @@
   font-weight: 500;
   color: #6b7280;
   margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.app.dark .stat-title {
+  color: #9ca3af;
 }
 
 .stat-value {
   font-size: 30px;
   font-weight: 700;
   color: #111827;
+  transition: color 0.3s;
+}
+
+.app.dark .stat-value {
+  color: #f3f4f6;
 }
 
 .stat-icon {
@@ -55,6 +74,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s;
+}
+
+/* Keep icon colors consistent in dark mode */
+.app.dark .stat-icon[style*="background-color: #dbeafe"] {
+  background-color: #1e3a8a !important;
+}
+
+.app.dark .stat-icon[style*="background-color: #dcfce7"] {
+  background-color: #14532d !important;
+}
+
+.app.dark .stat-icon[style*="background-color: #fef9c3"] {
+  background-color: #854d0e !important;
+}
+
+.app.dark .stat-icon[style*="background-color: #fee2e2"] {
+  background-color: #7f1d1d !important;
 }
 
 .loading-container {
@@ -62,19 +99,4 @@
   justify-content: center;
   align-items: center;
   height: 192px;
-}
-
-.spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #e5e7eb;
-  border-top-color: #2563eb;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }

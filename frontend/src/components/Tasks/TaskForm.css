@@ -12,6 +12,10 @@
   z-index: 1000;
 }
 
+.app.dark .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .modal-content {
   background-color: white;
   border-radius: 12px;
@@ -20,6 +24,13 @@
   padding: 24px;
   max-height: 90vh;
   overflow-y: auto;
+  transition: all 0.3s;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+.app.dark .modal-content {
+  background-color: #1f2937;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3), 0 10px 10px -5px rgba(0,0,0,0.2);
 }
 
 .modal-header {
@@ -34,6 +45,11 @@
   font-weight: 700;
   color: #111827;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.app.dark .modal-header h2 {
+  color: #f3f4f6;
 }
 
 .close-btn {
@@ -45,10 +61,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.2s;
+}
+
+.app.dark .close-btn {
+  color: #9ca3af;
 }
 
 .close-btn:hover {
   color: #111827;
+}
+
+.app.dark .close-btn:hover {
+  color: #f3f4f6;
 }
 
 .task-form {
@@ -68,6 +93,11 @@
   font-size: 14px;
   font-weight: 500;
   color: #374151;
+  transition: color 0.3s;
+}
+
+.app.dark .form-label {
+  color: #d1d5db;
 }
 
 .form-input,
@@ -78,6 +108,21 @@
   border-radius: 8px;
   font-size: 14px;
   transition: all 0.2s;
+  background-color: white;
+  color: #111827;
+}
+
+.app.dark .form-input,
+.app.dark .form-textarea,
+.app.dark .form-select {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
+.app.dark .form-input::placeholder,
+.app.dark .form-textarea::placeholder {
+  color: #6b7280;
 }
 
 .form-input:focus,
@@ -86,6 +131,13 @@
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.app.dark .form-input:focus,
+.app.dark .form-textarea:focus,
+.app.dark .form-select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96,165,250,0.2);
 }
 
 .form-textarea {
@@ -122,8 +174,19 @@
   color: #374151;
 }
 
+.app.dark .cancel-btn {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
 .cancel-btn:hover {
   background-color: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.app.dark .cancel-btn:hover {
+  background-color: #4b5563;
 }
 
 .submit-btn {
@@ -132,11 +195,24 @@
   color: white;
 }
 
+.app.dark .submit-btn {
+  background-color: #3b82f6;
+}
+
 .submit-btn:hover {
   background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(37,99,235,0.3);
+}
+
+.app.dark .submit-btn:hover {
+  background-color: #2563eb;
+  box-shadow: 0 4px 6px rgba(59,130,246,0.5);
 }
 
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }

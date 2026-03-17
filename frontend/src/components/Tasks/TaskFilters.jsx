@@ -39,6 +39,7 @@ const TaskFilters = ({ filters, setFilters }) => {
         >
           <option value="All">All Status</option>
           <option value="pending">Pending</option>
+          <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
         </select>
 
