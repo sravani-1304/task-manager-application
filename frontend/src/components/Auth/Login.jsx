@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { useAuth } from '../../context/AuthContext';
-import { 
-  FaTasks, 
-  FaEnvelope, 
-  FaLock, 
-  FaEye, 
-  FaEyeSlash,
- 
-  FaRocket
-} from 'react-icons/fa';
-
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';  // Only keep what you use
+// Remove these unused imports:
+// import { FaReact, FaNodeJs, FaDatabase, FaJs } from 'react-icons/fa';
+// import { SiMongodb, SiExpress } from 'react-icons/si';
 import './Auth.css';
 
 const Login = () => {
@@ -48,37 +41,12 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        {/* Project Branding */}
-        <div className="project-brand">
-          <div className="brand-icon-wrapper">
-            <FaTasks className="brand-icon" />
-            <FaRocket className="brand-icon-secondary" />
-          </div>
-          <h1 className="project-name">TaskFlow</h1>
-          <p className="project-tagline">Streamline Your Productivity</p>
-          
-          {/* Feature Pills */}
-          <div className="feature-pills">
-            <span className="pill">
-              <span className="pill-icon">✓</span> MERN Stack
-            </span>
-            <span className="pill">
-              <span className="pill-icon">✓</span> JWT Auth
-            </span>
-            <span className="pill">
-              <span className="pill-icon">✓</span> Dark Mode
-            </span>
-          </div>
-        </div>
-
-        <div className="divider"></div>
-
-        <div className="card-header">
-          <h2>Welcome Back!</h2>
+        <div className="auth-card-header">
+          <h2>Welcome Back</h2>
           <p>
-            New here?{' '}
+            Don't have an account?{' '}
             <Link to="/register" className="auth-link">
-              Create an account
+              Sign up
             </Link>
           </p>
         </div>
@@ -121,18 +89,11 @@ const Login = () => {
               </button>
             </div>
           </div>
-          <div style={{ textAlign: 'right', marginTop: '5px' }}>
-  <Link to="/forgot-password" className="auth-link" style={{ fontSize: '13px' }}>
-    Forgot password?
-  </Link>
-</div>
 
           <button type="submit" disabled={loading} className="auth-button">
-            {loading ? 'Signing in...' : 'Sign In to TaskFlow'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
-
-        
       </div>
     </div>
   );

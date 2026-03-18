@@ -1,6 +1,6 @@
-import React, { useState, useEffect,useCallback } from 'react';
+import React, { useState, useEffect } from 'react';  // Remove useCallback from import
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FaLock, FaEye, FaEyeSlash, FaArrowLeft, FaTasks, FaRocket } from 'react-icons/fa';
+import { FaLock, FaEye, FaEyeSlash, FaArrowLeft } from 'react-icons/fa';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
 import './Auth.css';
@@ -17,21 +17,21 @@ const ResetPassword = () => {
   const [validToken, setValidToken] = useState(null);
   const [checkingToken, setCheckingToken] = useState(true);
 
-  // Validate token on mount
+  // Move validateToken inside useEffect
   useEffect(() => {
-  validateToken();
-}, [token, validateToken]);
+    const validateToken = async () => {
+      try {
+        const response = await api.get(`/password-reset/validate/${token}`);
+        setValidToken(response.data.valid);
+      } catch (error) {
+        setValidToken(false);
+      } finally {
+        setCheckingToken(false);
+      }
+    };
 
-  const validateToken = useCallback(async () => {
-  try {
-    const response = await api.get(`/password-reset/validate/${token}`);
-    setValidToken(response.data.valid);
-  } catch (error) {
-    setValidToken(false);
-  } finally {
-    setCheckingToken(false);
-  }
-}, [token]);
+    validateToken();
+  }, [token]);  // Only token is needed as dependency
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +52,6 @@ const ResetPassword = () => {
       const response = await api.post(`/password-reset/reset/${token}`, { password });
       toast.success(response.data.message);
       
-      // Redirect to login after 3 seconds
       setTimeout(() => {
         navigate('/login');
       }, 3000);
@@ -79,39 +78,11 @@ const ResetPassword = () => {
     return (
       <div className="auth-container">
         <div className="auth-card" style={{ textAlign: 'center' }}>
-          <div className="project-brand">
-            <div className="brand-icon-wrapper">
-              <FaTasks className="brand-icon" />
-            </div>
-            <h1 className="project-name">TaskFlow</h1>
-          </div>
-
-          <div className="divider"></div>
-
-          <div style={{ padding: '30px 0' }}>
-            <div style={{ 
-              width: '80px', 
-              height: '80px', 
-              background: '#fee2e2', 
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 20px'
-            }}>
-              <span style={{ fontSize: '40px', color: '#ef4444' }}>!</span>
-            </div>
-            
-            <h2 style={{ color: '#ef4444', marginBottom: '15px' }}>Invalid or Expired Link</h2>
-            
-            <p style={{ color: '#6b7280', marginBottom: '20px' }}>
-              This password reset link is invalid or has expired.
-            </p>
-
-            <Link to="/forgot-password" className="auth-button" style={{ textDecoration: 'none', display: 'inline-block' }}>
-              Request New Link
-            </Link>
-          </div>
+          <h2>Invalid or Expired Link</h2>
+          <p>This password reset link is invalid or has expired.</p>
+          <Link to="/forgot-password" className="auth-button" style={{ textDecoration: 'none', display: 'inline-block', marginTop: '20px' }}>
+            Request New Link
+          </Link>
         </div>
       </div>
     );
@@ -120,18 +91,6 @@ const ResetPassword = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        {/* Project Branding */}
-        <div className="project-brand">
-          <div className="brand-icon-wrapper">
-            <FaTasks className="brand-icon" />
-            <FaRocket className="brand-icon-secondary" />
-          </div>
-          <h1 className="project-name">TaskFlow</h1>
-          <p className="project-tagline">Create New Password</p>
-        </div>
-
-        <div className="divider"></div>
-
         <div className="card-header">
           <h2>Reset Password</h2>
           <p>
@@ -184,7 +143,6 @@ const ResetPassword = () => {
             </div>
           </div>
 
-          {/* Password strength indicator */}
           <div className="password-requirements">
             <p className="requirements-title">Password must:</p>
             <ul className="requirements-list">
