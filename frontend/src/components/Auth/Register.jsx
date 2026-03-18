@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';  // Only keep what you use
-// Remove these unused imports:
-// import { FaReact, FaNodeJs, FaDatabase, FaJs } from 'react-icons/fa';
-// import { SiMongodb, SiExpress } from 'react-icons/si';
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Auth.css';
 
 const Register = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';  // Remove useCallback from import
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaLock, FaEye, FaEyeSlash, FaArrowLeft } from 'react-icons/fa';
 import api from '../../utils/api';
@@ -17,7 +17,6 @@ const ResetPassword = () => {
   const [validToken, setValidToken] = useState(null);
   const [checkingToken, setCheckingToken] = useState(true);
 
-  // Move validateToken inside useEffect
   useEffect(() => {
     const validateToken = async () => {
       try {
@@ -31,7 +30,7 @@ const ResetPassword = () => {
     };
 
     validateToken();
-  }, [token]);  // Only token is needed as dependency
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

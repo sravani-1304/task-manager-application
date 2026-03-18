@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';  // Add useCallback
+import React, { useState, useEffect, useCallback } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import api from '../../utils/api';
 import TaskItem from './TaskItem';
@@ -26,7 +26,6 @@ const TaskList = () => {
     totalTasks: 0
   });
 
-  // Wrap fetchTasks in useCallback
   const fetchTasks = useCallback(async () => {
     try {
       setLoading(true);
@@ -49,12 +48,11 @@ const TaskList = () => {
     } finally {
       setLoading(false);
     }
-  }, [filters]);  // Add filters as dependency
+  }, [filters]);
 
-  // Now useEffect is properly set up
   useEffect(() => {
     fetchTasks();
-  }, [fetchTasks]);  // Add fetchTasks to dependencies
+  }, [fetchTasks]);
 
   const handleEditTask = (task) => {
     setEditingTask(task);
